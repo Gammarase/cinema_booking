@@ -1,4 +1,6 @@
 import 'package:cinema_booking/view/model/bloc.dart';
+import 'package:cinema_booking/view/model/events_bloc.dart';
+import 'package:cinema_booking/view/model/states_bloc.dart';
 import 'package:cinema_booking/view/themes/ui_components/films/film_tale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -75,6 +77,8 @@ class _SearchFilmsState extends State<SearchFilms> {
                     flex: 3,
                     child: TextField(
                       controller: _searchLine,
+                      onSubmitted: (str) =>
+                          context.read<AppAuthBloc>().add(RefreshEvent()),
                       onTapOutside: (pointer) =>
                           FocusScope.of(context).unfocus(),
                       style: Theme.of(context).textTheme.bodyMedium,
@@ -115,35 +119,38 @@ class _SearchFilmsState extends State<SearchFilms> {
                 ],
               ),
               Expanded(
-                child: FutureBuilder(
-                  future: context.read<AppAuthBloc>().state.dioClient.getFilms(
-                        _date.text,
-                        _searchLine.text,
-                      ),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return ListView.builder(
-                        itemBuilder: (context, index) {
-                          return InkWell(
-                            onTap: () => Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    FilmInfo(film: snapshot.data![index],
-                                    stringDate: _date.text),
+                child: BlocBuilder<AppAuthBloc, AppState>(
+                    builder: (context, state) {
+                  return FutureBuilder(
+                    future: state.dioClient.getFilms(
+                      _date.text,
+                      _searchLine.text,
+                    ),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return ListView.builder(
+                          itemBuilder: (context, index) {
+                            return InkWell(
+                              onTap: () => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => FilmInfo(
+                                      film: snapshot.data![index],
+                                      stringDate: _date.text),
+                                ),
                               ),
-                            ),
-                            child: FilmTale(
-                              film: snapshot.data![index],
-                            ),
-                          );
-                        },
-                        itemCount: snapshot.data?.length,
-                      );
-                    } else {
-                      return const Center(child: CircularProgressIndicator());
-                    }
-                  },
-                ),
+                              child: FilmTale(
+                                film: snapshot.data![index],
+                              ),
+                            );
+                          },
+                          itemCount: snapshot.data?.length,
+                        );
+                      } else {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                    },
+                  );
+                }),
               )
             ],
           ),
