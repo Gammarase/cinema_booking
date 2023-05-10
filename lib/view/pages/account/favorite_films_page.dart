@@ -2,7 +2,7 @@ import 'package:cinema_booking/domain/entities/film.dart';
 import 'package:cinema_booking/view/model/bloc.dart';
 import 'package:cinema_booking/view/model/states_bloc.dart';
 import 'package:cinema_booking/view/pages/films/movie_view_page.dart';
-import 'package:cinema_booking/view/themes/film_tale.dart';
+import 'package:cinema_booking/view/themes/ui_components/films/film_tale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';

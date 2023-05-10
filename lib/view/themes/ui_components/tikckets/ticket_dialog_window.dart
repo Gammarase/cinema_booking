@@ -4,19 +4,19 @@ import 'package:qr_flutter/qr_flutter.dart';
 
 showTicket(Ticket ticket, BuildContext context) {
   showDialog(
-    barrierDismissible: false,
     context: context,
     builder: (context) {
       return AlertDialog(
         title: Text(ticket.name),
         content: Column(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height / 3,
+              height: MediaQuery.of(context).size.height / 4,
               child: GridTile(
                 header: Container(
-                  height: MediaQuery.of(context).size.height / 6,
+                  height: MediaQuery.of(context).size.height / 8,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
@@ -29,7 +29,7 @@ showTicket(Ticket ticket, BuildContext context) {
                   ),
                 ),
                 footer: Container(
-                  height: MediaQuery.of(context).size.height / 6,
+                  height: MediaQuery.of(context).size.height / 8,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(colors: [
                       Colors.transparent,
@@ -56,6 +56,7 @@ showTicket(Ticket ticket, BuildContext context) {
                 borderRadius: BorderRadius.circular(3),
               ),
             ),
+            const SizedBox(height: 20,),
             Container(
               width: MediaQuery.of(context).size.width / 2,
               height: MediaQuery.of(context).size.width / 2,

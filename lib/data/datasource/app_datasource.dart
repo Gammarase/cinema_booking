@@ -25,24 +25,6 @@ class DataSource {
         receiveTimeout: const Duration(seconds: 3),
       ),
     );
-    //TODO delete debug interceptor
-    dio.interceptors.add(InterceptorsWrapper(
-      onResponse: (Response response, ResponseInterceptorHandler handler) {
-        print('Got a response $response');
-        return handler.next(response);
-      },
-      onError: (DioError e, ErrorInterceptorHandler handler) {
-        print('Got an error $e');
-        print('Error message ${e.message}');
-        print('Error body ${e.response}');
-        return handler.next(e);
-      },
-      onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
-        print(
-            'make request with data ${options.data}\n and headers ${options.headers}\n ${options.path}');
-        return handler.next(options);
-      },
-    ));
   }
 
   set authToken(v) {

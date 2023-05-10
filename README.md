@@ -1,16 +1,8 @@
 # cinema_booking
 
-A new Flutter project.
+A final project for Flutter Empat School
 
-## Getting Started
+## About application
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This application allow to view a list of available film, sort or add to favorites them, book and buy tickets.
+Also implemented control of user profile and list of purchased active tickets with archive for old ones.

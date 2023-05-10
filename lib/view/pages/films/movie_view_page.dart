@@ -4,12 +4,12 @@ import 'package:cinema_booking/view/model/bloc.dart';
 import 'package:cinema_booking/view/model/events_bloc.dart';
 import 'package:cinema_booking/view/model/states_bloc.dart';
 import 'package:cinema_booking/view/pages/films/session_wiev_page.dart';
-import 'package:cinema_booking/view/themes/comment_add_form.dart';
-import 'package:cinema_booking/view/themes/comments_block.dart';
-import 'package:cinema_booking/view/themes/gradient_icon.dart';
+import 'package:cinema_booking/view/themes/ui_components/films/comment_add_form.dart';
+import 'package:cinema_booking/view/themes/ui_components/films/comments_block.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:social_share/social_share.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class FilmInfo extends StatelessWidget {
@@ -143,39 +143,75 @@ class FilmInfo extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Container(
-              width: MediaQuery.of(context).size.width / 2,
-              decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.7),
-                  borderRadius: BorderRadius.circular(15)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  Icon(
-                    Icons.facebook,
-                    color: Color(0xFF4267B2),
-                    size: 40,
-                  ),
-                  Icon(
-                    Icons.telegram,
-                    color: Color(0xFF2AABEE),
-                    size: 40,
-                  ),
-                  GradientIcon(
-                    icon: FontAwesomeIcons.instagram,
-                    size: 40,
-                    gradient: LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        Colors.purple,
-                        Colors.pink,
-                        Colors.orange,
-                      ],
+            // Container(
+            //   width: MediaQuery.of(context).size.width / 2,
+            //   decoration: BoxDecoration(
+            //       color: Colors.white.withOpacity(0.7),
+            //       borderRadius: BorderRadius.circular(15)),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //     children: [
+            //       InkWell(
+            //         onTap: () => SocialShare.shareTwitter(
+            //             'Check out ${film.name}, here is trailer: ${film.trailer}'),
+            //         child: const Icon(
+            //           FontAwesomeIcons.twitter,
+            //           color: Color(0xFF1DA1F2),
+            //           size: 40,
+            //         ),
+            //       ),
+            //       InkWell(
+            //         onTap: () => SocialShare.shareOptions(
+            //             'Check out ${film.name}, here is trailer: ${film.trailer}'),
+            //         child: const GradientIcon(
+            //           icon: FontAwesomeIcons.instagram,
+            //           size: 40,
+            //           gradient: LinearGradient(
+            //             begin: Alignment.topRight,
+            //             end: Alignment.bottomRight,
+            //             colors: [
+            //               Colors.purple,
+            //               Colors.pink,
+            //               Colors.orange,
+            //             ],
+            //           ),
+            //         ),
+            //       ),
+            //       InkWell(
+            //         onTap: () => SocialShare.shareTelegram(
+            //             'Check out ${film.name}, here is trailer: ${film.trailer}'),
+            //         child: const Icon(
+            //           Icons.telegram,
+            //           color: Color(0xFF2AABEE),
+            //           size: 40,
+            //         ),
+            //       ),
+            //
+            //       // Icon(FontAwesomeIcons.instagram, ),
+            //     ],
+            //   ),
+            // ),
+            InkWell(
+              onTap: () => SocialShare.shareOptions(
+                  'Check out ${film.name}, here is trailer: ${film.trailer}'),
+              child: Container(
+                width: MediaQuery.of(context).size.width / 2,
+                margin: const EdgeInsets.only(top: 5),
+                padding: const EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primary,
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Share',
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
-                  )
-                  // Icon(FontAwesomeIcons.instagram, ),
-                ],
+                    const Icon(FontAwesomeIcons.shareNodes),
+                  ],
+                ),
               ),
             ),
             const SizedBox(
@@ -251,7 +287,9 @@ class FilmInfo extends StatelessWidget {
                 }
               },
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             Text(
               'Reviews:',
               style: Theme.of(context).textTheme.bodyLarge,

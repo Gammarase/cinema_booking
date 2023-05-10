@@ -164,18 +164,16 @@ showChangeNameDialog(BuildContext context) {
             'Change your name',
             style: Theme.of(context).textTheme.displayMedium,
           ),
-          content: SizedBox(
-            height: MediaQuery.of(context).size.height / 4,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text('Your new name:'),
-                TextField(
-                  controller: nameController,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-              ],
-            ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('Your new name:'),
+              TextField(
+                controller: nameController,
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ],
           ),
           actions: [
             TextButton(

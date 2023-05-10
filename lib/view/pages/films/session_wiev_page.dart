@@ -4,8 +4,8 @@ import 'package:cinema_booking/view/model/bloc.dart';
 import 'package:cinema_booking/view/model/events_bloc.dart';
 import 'package:cinema_booking/view/model/states_bloc.dart';
 import 'package:cinema_booking/view/pages/films/payment_page.dart';
-import 'package:cinema_booking/view/themes/alert_dialog.dart';
-import 'package:cinema_booking/view/themes/app_button.dart';
+import 'package:cinema_booking/view/themes/ui_components/app/alert_dialog.dart';
+import 'package:cinema_booking/view/themes/ui_components/app/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

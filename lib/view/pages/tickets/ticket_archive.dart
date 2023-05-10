@@ -1,6 +1,6 @@
 import 'package:cinema_booking/view/model/bloc.dart';
-import 'package:cinema_booking/view/pages/tickets/ticket_dialog_window.dart';
-import 'package:cinema_booking/view/themes/ticket_tale.dart';
+import 'package:cinema_booking/view/themes/ui_components/tikckets/ticket_dialog_window.dart';
+import 'package:cinema_booking/view/themes/ui_components/tikckets/ticket_tale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
