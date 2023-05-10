@@ -28,18 +28,19 @@ class TicketsPage extends StatelessWidget {
                     return _ifHaveActualTickets(snapshot.data!)
                         ? ListView.builder(
                             itemBuilder: (context, index) {
-                              return snapshot.data![index].date >
-                                      (DateTime.now().millisecondsSinceEpoch /
-                                              1000)
-                                          .floor()
-                                  ? InkWell(
-                                      onTap: () => showTicket(
-                                          snapshot.data![index], context),
-                                      child: TicketTale(
-                                        ticket: snapshot.data![index],
-                                      ),
-                                    )
-                                  : null;
+                              return Visibility(
+                                visible: snapshot.data![index].date >
+                                    (DateTime.now().millisecondsSinceEpoch /
+                                            1000)
+                                        .floor(),
+                                child: InkWell(
+                                  onTap: () => showTicket(
+                                      snapshot.data![index], context),
+                                  child: TicketTale(
+                                    ticket: snapshot.data![index],
+                                  ),
+                                ),
+                              );
                             },
                             itemCount: snapshot.data?.length,
                           )
