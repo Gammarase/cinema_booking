@@ -17,6 +17,7 @@ class TokenStorage {
     if (accessToken == null) {
       accessToken = await _serverAuthorise();
       instance.setString('token', accessToken!);
+      source!.authToken = accessToken;
     }
     else{
       await _checkToken(instance);

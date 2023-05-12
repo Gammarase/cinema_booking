@@ -1,7 +1,7 @@
 class Comment {
   int id;
   String? author;
-  String content;
+  String? content;
   int rating;
   bool isMy;
 

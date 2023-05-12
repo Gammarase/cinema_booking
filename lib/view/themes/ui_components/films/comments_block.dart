@@ -16,6 +16,7 @@ class CommentBlock extends StatelessWidget {
         future: state.dioClient.getComments(filmId),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
+            snapshot.data!.retainWhere((element) => element.content!=null);
             if (snapshot.data!.isEmpty) {
               return const Padding(
                 padding: EdgeInsets.symmetric(vertical: 10),
@@ -95,7 +96,7 @@ class CommentWidget extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        comment.content,
+                        comment.content!,
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ),
